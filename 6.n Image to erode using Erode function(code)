@@ -1,0 +1,16 @@
+import cv2
+import numpy as np
+
+image = cv2.imread(r"C:\Users\obulr\OneDrive\Pictures\IMG-20250219-WA0034[1].jpg")
+
+if image is None:
+    print("Error: Image not found. Check file name or path.")
+    exit()
+
+kernel = np.ones((5,5), np.uint8)
+eroded = cv2.erode(image, kernel, iterations=1)
+
+cv2.imshow("Original", image)
+cv2.imshow("Eroded", eroded)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
