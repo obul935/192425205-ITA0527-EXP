@@ -1,0 +1,26 @@
+import cv2
+
+# Read the image (provide your image path)
+image = cv2.imread(r"C:\Users\obulr\OneDrive\Pictures\IMG-20250219-WA0034[1].jpg")
+
+# Check if image is loaded
+if image is None:
+    print("Error: Image not found")
+    exit()
+
+# Get original dimensions
+height, width = image.shape[:2]
+
+# --------- Shrink Image (Small Size) ---------
+small_image = cv2.resize(image, (width//2, height//2))
+
+# --------- Enlarge Image (Big Size) ---------
+big_image = cv2.resize(image, (width*2, height*2))
+
+# Display images
+cv2.imshow("Original Image", image)
+cv2.imshow("Small Image", small_image)
+cv2.imshow("Big Image", big_image)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
