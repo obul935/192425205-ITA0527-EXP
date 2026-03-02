@@ -1,0 +1,40 @@
+import cv2
+
+# Use 0 for webcam or give video file path like "video.mp4"
+video_source = "video.mp4"
+
+cap = cv2.VideoCapture(r"C:\Users\obulr\Videos\Screen Recordings\Screen Recording 2025-09-24 184232.mp4")
+
+if not cap.isOpened():
+    print("Error: Cannot open video source")
+    exit()
+
+print("Controls:")
+print("q - Quit")
+print("s - Slow motion")
+print("n - Normal speed")
+print("f - Fast motion")
+
+delay = 30   # Normal speed
+
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    frame = cv2.resize(frame, (640, 480))
+    cv2.imshow("Video", frame)
+
+    key = cv2.waitKey(delay) & 0xFF
+
+    if key == ord('q'):
+        break
+    elif key == ord('s'):
+        delay = 150   # Slow motion
+    elif key == ord('f'):
+        delay = 1     # Fast motion
+    elif key == ord('n'):
+        delay = 30    # Normal
+
+cap.release()
+cv2.destroyAllWindows()
