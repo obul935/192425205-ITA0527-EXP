@@ -1,0 +1,19 @@
+import cv2
+import numpy as np
+
+image = cv2.imread(r"C:\Users\obulr\OneDrive\Pictures\IMG-20250219-WA0034[1].jpg")
+
+roi = image[100:300, 150:350]
+
+h, w = roi.shape[:2]
+
+
+
+cv2.imshow("Original Image", image)
+cv2.imshow("Cropped ROI", roi)
+
+cv2.imwrite("cropped_roi.jpg", roi)
+cv2.imwrite("roi_pasted_image.jpg", image)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
