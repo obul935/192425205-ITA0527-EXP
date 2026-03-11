@@ -1,0 +1,28 @@
+import cv2
+
+def play_video_reverse_slow_memory_efficient(video_path):
+    cap = cv2.VideoCapture(video_path)
+    
+    if not cap.isOpened():
+        print("Error: Could not open video.")
+        return
+
+    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    print(f"Total frames to process: {total_frames}")
+
+    for frame_idx in range(total_frames - 1, -1, -1):
+        cap.set(cv2.CAP_PROP_POS_FRAMES, frame_idx)
+        
+        ret, frame = cap.read()
+        if not ret:
+            break
+
+        cv2.imshow('Reverse Slow Motion (Memory Efficient)', frame)
+
+        if cv2.waitKey(100) & 0xFF == ord('q'):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
+
+play_video_reverse_slow_memory_efficient(r"C:\Users\obulr\Videos\Screen Recordings\Screen Recording 2025-09-24 184232.mp4")
