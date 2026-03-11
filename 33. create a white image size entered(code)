@@ -1,0 +1,15 @@
+import cv2
+import numpy as np
+
+h = int(input())
+w = int(input())
+
+img = np.ones((h, w, 3), dtype=np.uint8) * 255
+
+cv2.rectangle(img, (w//4, h//4), (3*w//4, 3*h//4), (0, 0, 255), 3)
+
+cv2.imshow("Image", img)
+cv2.imwrite(r"C:\Users\obulr\OneDrive\Pictures\IMG-20250219-WA0034[1].jpg", img)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
