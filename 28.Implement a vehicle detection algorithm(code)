@@ -1,0 +1,22 @@
+import cv2
+
+car_cascade = cv2.CascadeClassifier("C:\\Users\\jaswa\\OneDrive\\Desktop\\matsya th2.xml")
+
+img = cv2.imread(r"C:\Users\obulr\OneDrive\Pictures\IMG-20250219-WA0034[1].jpg")
+
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+cars = car_cascade.detectMultiScale(
+    gray,
+    scaleFactor=1.1,
+    minNeighbors=15,
+    minSize=(180, 180)
+)
+
+for (x, y, w, h) in cars:
+    cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 3)
+
+cv2.imshow("Car Only Detection", img)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
