@@ -1,0 +1,13 @@
+import cv2
+
+text = input()
+
+img = cv2.imread(r"C:\Users\obulr\OneDrive\Pictures\IMG-20250219-WA0034[1].jpg")
+
+cv2.putText(img, text, (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+
+cv2.imshow("Image", img)
+cv2.imwrite(r"C:\Users\obulr\OneDrive\Pictures\IMG-20250219-WA0034[1].jpg", img)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
